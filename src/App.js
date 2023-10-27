@@ -8,13 +8,11 @@ function App() {
   const [selected, setSelected] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState("");
   const q = data[currentQuestion];
 
   useEffect(() => {
     setIsSubmitted(false);
     setIsCorrect(false);
-    setAnswers("");
     setSelected([]);
   }, [currentQuestion]);
 
@@ -55,13 +53,13 @@ function App() {
         <div>
           <button
             onClick={() => {
-              if (selected.length === 0){
+              if (selected.length === 0) {
                 alert("답을 선택해주세요.");
                 return;
               }
 
               setIsSubmitted(true);
-              setIsCorrect(q.answer === answers);
+              setIsCorrect(q.answer === selected.join(""));
               setScore(isCorrect ? score + 1 : score);
             }}
           >
