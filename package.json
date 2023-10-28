@@ -15,6 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "ebuild": "electron-builder build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -35,5 +36,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^27.0.2",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "productName": "My App",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "win": {
+      "target": "nsis"
+    }
   }
 }

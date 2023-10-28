@@ -1,4 +1,5 @@
 import data from "./AWS_SAA-C03_Dump.json"
+import "./App.css";
 import { useState, useEffect } from "react";
 
 
@@ -8,6 +9,8 @@ function App() {
   const [selected, setSelected] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const [isWarpOpened, setIsWarpOpened] = useState(false);
+
   const q = data[currentQuestion];
 
   useEffect(() => {
@@ -18,20 +21,35 @@ function App() {
 
   return (
     <div className="App">
-      <p>QuizDump</p>
+      <p className="title">QuizDump</p>
 
       <div>
-        <p>현재 문제: <textarea value={currentQuestion} onChange={
-          (e) => {
-            if (parseInt(e.target.value) <= 0 || parseInt(e.target.value) >= data.length || isNaN(parseInt(e.target.value))) {
-              alert("범위를 벗어난 문제입니다.")
-            }
-            else setCurrentQuestion(parseInt(e.target.value))
-          }
+        <p>현재 문제: {currentQuestion}</p>
 
-        }></textarea> </p>
+        <button onClick={() => isWarpOpened ? setIsWarpOpened(false) : setIsWarpOpened(true)}>문제 이동하기</button>
+
+        {
+          isWarpOpened &&
+          <div>
+            <textarea id="warpNum" placeholder="이동할 문제 번호 입력" value={currentQuestion} onChange={
+              (e) => {
+                if (parseInt(e.target.value) <= 0 || parseInt(e.target.value) >= data.length || isNaN(parseInt(e.target.value))) {
+                  alert("범위를 벗어난 문제입니다.")
+                }
+                else this.value = (parseInt(e.target.value))
+              }
+
+            } />
+            <button onClick={() => setCurrentQuestion(parseInt(document.getElementById('warpNum').value))}>이동</button>
+          </div>
+        }
+
+
         <div>
-          <p>{q.question}</p>
+          <div className="question">{q.question}</div>
+
+          <div className="answerdiv">
+
           {q.choices.map((c, index) => {
             const isChecked = selected.includes(c.option);
             return (
@@ -42,40 +60,48 @@ function App() {
                   setSelected([...selected, c.option]);
                 }
               }}>
-                <p>
+                <div className="answer">
                   <input type="checkbox" checked={isChecked} /> {c.option} : {c.text}
-                </p>
+                </div>
               </div>
             );
           })}
-
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              if (selected.length === 0) {
-                alert("답을 선택해주세요.");
-                return;
-              }
-
-              setIsSubmitted(true);
-              setIsCorrect(q.answer === selected.join(""));
-              setScore(isCorrect ? score + 1 : score);
-            }}
-          >
-            제출
-          </button><div>
-            {isSubmitted && <p>정답: {q.answer}</p>}
-            {isSubmitted && isCorrect && <p>정답입니다!</p>}
-            {isSubmitted && !isCorrect && <p>오답입니다!</p>}
           </div>
 
-          {currentQuestion !== 0 && <button onClick={() => setCurrentQuestion(currentQuestion - 1)}> 이전 문제</button>}
-          {currentQuestion <= data.length && <button onClick={() => setCurrentQuestion(currentQuestion + 1)}> 다음 문제</button>}
+        </div>
+
+
+        <div className="aligncenter">
+          <div>
+            <button
+              onClick={() => {
+                if (selected.length === 0) {
+                  alert("답을 선택해주세요.");
+                  return;
+                }
+
+                setIsSubmitted(true);
+                setIsCorrect(q.answer === selected.join(""));
+                setScore(isCorrect ? score + 1 : score);
+              }}
+            >
+              제출
+            </button>
+          </div>
+          <div>
+            {/* {isSubmitted && isCorrect&& <div>정답: {q.answer}</div>} */}
+            <div>
+              {isSubmitted && isCorrect && <div>정답입니다!</div>}
+              {isSubmitted && !isCorrect && <div>오답입니다!</div>}
+            </div>
+          </div>
+        </div>
+        <div className="aligncenter">
+          {currentQuestion !== 0 && <button className="nextQ" onClick={() => setCurrentQuestion(currentQuestion - 1)}> 이전 문제</button>}
+          {currentQuestion <= data.length && <button className="prevQ" onClick={() => setCurrentQuestion(currentQuestion + 1)}> 다음 문제</button>}
         </div>
       </div>
-
-    </div>);
+    </div >);
 }
 
 export default App;
