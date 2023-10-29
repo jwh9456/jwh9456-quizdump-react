@@ -9,6 +9,7 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const q = data[currentQuestion];
+  const idx = currentQuestion+Number(1);
 
   useEffect(() => {
     setIsSubmitted(false);
@@ -21,15 +22,17 @@ function App() {
       <p>QuizDump</p>
 
       <div>
-        <p>현재 문제: <textarea value={currentQuestion} onChange={
+        <p>현재 문제: <textarea value={idx} onChange={
           (e) => {
             if (parseInt(e.target.value) <= 0 || parseInt(e.target.value) >= data.length || isNaN(parseInt(e.target.value))) {
               alert("범위를 벗어난 문제입니다.")
             }
-            else setCurrentQuestion(parseInt(e.target.value))
+            else setCurrentQuestion(idx-1)
           }
 
         }></textarea> </p>
+
+        <p>점수: {score} / {data.length}</p>
         <div>
           <p>{q.question}</p>
           {q.choices.map((c, index) => {
