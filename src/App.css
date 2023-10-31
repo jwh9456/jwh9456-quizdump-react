@@ -72,3 +72,15 @@
     justify-content: center;
 
 }
+
+.XBox {
+    float: inline-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin: 0 auto;
+    width: 50%;
+}
