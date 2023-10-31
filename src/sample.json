@@ -1,0 +1,232 @@
+[
+    {
+        "questionNum": 101,
+        "question": "Which planet in our solar system is known as the Red Planet?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Mars is known as the Red Planet due to its reddish appearance."
+            },
+            {
+                "option": "B",
+                "text": "Venus is called the Red Planet because of its extreme heat."
+            },
+            {
+                "option": "C",
+                "text": "Jupiter is often referred to as the Red Planet because of its massive size."
+            },
+            {
+                "option": "D",
+                "text": "Earth is known as the Red Planet due to its red soil in some regions."
+            }
+        ],
+        "answer": "A"
+    },
+    {
+        "questionNum": 102,
+        "question": "What is the largest mammal on Earth?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Blue Whale is the largest mammal on Earth."
+            },
+            {
+                "option": "B",
+                "text": "Elephant is the largest mammal on Earth."
+            },
+            {
+                "option": "C",
+                "text": "Giraffe is the largest mammal on Earth."
+            },
+            {
+                "option": "D",
+                "text": "Lion is the largest mammal on Earth."
+            }
+        ],
+        "answer": "A"
+    },
+    {
+        "questionNum": 103,
+        "question": "What gas do plants absorb from the atmosphere?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Oxygen"
+            },
+            {
+                "option": "B",
+                "text": "Carbon Dioxide"
+            },
+            {
+                "option": "C",
+                "text": "Nitrogen"
+            },
+            {
+                "option": "D",
+                "text": "Methane"
+            }
+        ],
+        "answer": "B"
+    },
+    {
+        "questionNum": 104,
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "China"
+            },
+            {
+                "option": "B",
+                "text": "India"
+            },
+            {
+                "option": "C",
+                "text": "Japan"
+            },
+            {
+                "option": "D",
+                "text": "South Korea"
+            }
+        ],
+        "answer": "C"
+    },
+    {
+        "questionNum": 105,
+        "question": "What is the capital of Australia?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Sydney"
+            },
+            {
+                "option": "B",
+                "text": "Melbourne"
+            },
+            {
+                "option": "C",
+                "text": "Canberra"
+            },
+            {
+                "option": "D",
+                "text": "Perth"
+            }
+        ],
+        "answer": "C"
+    },
+    {
+        "questionNum": 106,
+        "question": "Which gas makes up the majority of Earth's atmosphere?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Oxygen"
+            },
+            {
+                "option": "B",
+                "text": "Carbon Dioxide"
+            },
+            {
+                "option": "C",
+                "text": "Nitrogen"
+            },
+            {
+                "option": "D",
+                "text": "Hydrogen"
+            }
+        ],
+        "answer": "C"
+    },
+    {
+        "questionNum": 107,
+        "question": "What is the largest planet in our solar system?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Earth"
+            },
+            {
+                "option": "B",
+                "text": "Mars"
+            },
+            {
+                "option": "C",
+                "text": "Jupiter"
+            },
+            {
+                "option": "D",
+                "text": "Venus"
+            }
+        ],
+        "answer": "C"
+    },
+    {
+        "questionNum": 108,
+        "question": "Which gas is known as laughing gas?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Oxygen"
+            },
+            {
+                "option": "B",
+                "text": "Carbon Dioxide"
+            },
+            {
+                "option": "C",
+                "text": "Nitrous Oxide"
+            },
+            {
+                "option": "D",
+                "text": "Hydrogen"
+            }
+        ],
+        "answer": "C"
+    },
+    {
+        "questionNum": 109,
+        "question": "What is the chemical symbol for gold?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Au"
+            },
+            {
+                "option": "B",
+                "text": "Ag"
+            },
+            {
+                "option": "C",
+                "text": "Fe"
+            },
+            {
+                "option": "D",
+                "text": "Hg"
+            }
+        ],
+        "answer": "A"
+    },
+    {
+        "questionNum": 110,
+        "question": "Which famous scientist developed the theory of general relativity?",
+        "choices": [
+            {
+                "option": "A",
+                "text": "Isaac Newton"
+            },
+            {
+                "option": "B",
+                "text": "Niels Bohr"
+            },
+            {
+                "option": "C",
+                "text": "Albert Einstein"
+            },
+            {
+                "option": "D",
+                "text": "Stephen Hawking"
+            }
+        ],
+        "answer": "C"
+    }
+]

@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /dist
+
+./AWS_SAA-C03_Dump.json

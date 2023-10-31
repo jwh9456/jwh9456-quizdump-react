@@ -1,6 +1,6 @@
 import data from "./AWS_SAA-C03_Dump.json"
 import "./App.css";
-import { useState, useEffect } from "react";
+import {React, useState, useEffect } from "react";
 
 
 function App() {
@@ -119,7 +119,16 @@ function App() {
 
                 setIsSubmitted(true);
                 setIsCorrect(q.answer === selected.join(""));
-                isCorrect ? setO([...O, idx]) : setX([...X, idx]);
+
+                if(isCorrect) {
+                  if(X.includes(currentQuestion)) setX(X.filter((x) => x !== currentQuestion));
+                  else setO([...O, currentQuestion]);
+                }
+                else {
+                  if(X.includes(currentQuestion)) return;
+                  else setX(([...X, currentQuestion]).sort());
+                }
+
                 setScore(isCorrect ? score + 1 : score);
                 setHistory([...history, currentQuestion]);
               }}
@@ -137,7 +146,7 @@ function App() {
         </div>
         <div className="aligncenter">
           {currentQuestion !== 0 && <button className="prevQ" onClick={() => {
-            setCurrentQuestion(history.pop());
+            setCurrentQuestion(history[history.length - 1]);
           }
 
           }> 이전 문제</button>
