@@ -1,4 +1,4 @@
-import data from "./AWS_SAA-C03_Dump.json"
+import data from "./sample.json"
 import "./App.css";
 import {React, useState, useEffect } from "react";
 
