@@ -48,7 +48,7 @@ function App() {
                 <div className="XBoxContent">
                   {X.map((x, index) => {
                     return (
-                      <button onClick={()=>{
+                      <button onClick={() => {
                         setCurrentQuestion(x);
                         setShowXBox(false);
                       }} key={index}>
@@ -121,6 +121,7 @@ function App() {
                 setIsCorrect(q.answer === selected.join(""));
                 isCorrect ? setO([...O, idx]) : setX([...X, idx]);
                 setScore(isCorrect ? score + 1 : score);
+                setHistory([...history, currentQuestion]);
               }}
             >
               제출
@@ -137,10 +138,10 @@ function App() {
         <div className="aligncenter">
           {currentQuestion !== 0 && <button className="prevQ" onClick={() => {
             setCurrentQuestion(history.pop());
-            setHistory(history);
           }
 
-          }> 이전 문제</button>}
+          }> 이전 문제</button>
+          }
 
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
