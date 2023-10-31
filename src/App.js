@@ -10,6 +10,11 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [isWarpOpened, setIsWarpOpened] = useState(false);
+  const [isRandom, setIsRandom] = useState(false);
+  const [history, setHistory] = useState([]);
+  const [O, setO] = useState([]);
+  const [X, setX] = useState([]);
+  const [ShowXBox, setShowXBox] = useState(false);
 
   const q = data[currentQuestion];
   const idx = currentQuestion + Number(1);
@@ -28,6 +33,34 @@ function App() {
         <p>현재 문제: {idx}</p>
 
         <button onClick={() => isWarpOpened ? setIsWarpOpened(false) : setIsWarpOpened(true)}>문제 이동하기</button>
+
+        <p>
+          <input type="checkbox" id="random" onClick={() => isRandom ? setIsRandom(false) : setIsRandom(true)} />
+          무작위로 문제 풀기
+        </p>
+
+        <p>
+          <input type="checkbox" checked={ShowXBox} id="showXBox" onClick={() => ShowXBox ? setShowXBox(false) : setShowXBox(true)} />
+          틀린문제 보기
+          {
+            ShowXBox && <div>
+              <div className="XBox">
+                <div className="XBoxContent">
+                  {X.map((x, index) => {
+                    return (
+                      <button onClick={()=>{
+                        setCurrentQuestion(x);
+                        setShowXBox(false);
+                      }} key={index}>
+                        {x + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          }
+        </p>
 
         {
           isWarpOpened &&
@@ -61,7 +94,7 @@ function App() {
                   if (isChecked) {
                     setSelected(selected.filter((option) => option !== c.option));
                   } else {
-                    setSelected([...selected, c.option]);
+                    setSelected(([...selected, c.option]).sort());
                   }
                 }}>
                   <div className="answer">
@@ -86,6 +119,7 @@ function App() {
 
                 setIsSubmitted(true);
                 setIsCorrect(q.answer === selected.join(""));
+                isCorrect ? setO([...O, idx]) : setX([...X, idx]);
                 setScore(isCorrect ? score + 1 : score);
               }}
             >
@@ -101,8 +135,29 @@ function App() {
           </div>
         </div>
         <div className="aligncenter">
-          {currentQuestion !== 0 && <button className="nextQ" onClick={() => setCurrentQuestion(currentQuestion - 1)}> 이전 문제</button>}
-          {currentQuestion <= data.length && <button className="prevQ" onClick={() => setCurrentQuestion(currentQuestion + 1)}> 다음 문제</button>}
+          {currentQuestion !== 0 && <button className="prevQ" onClick={() => {
+            setCurrentQuestion(history.pop());
+            setHistory(history);
+          }
+
+          }> 이전 문제</button>}
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          {currentQuestion <= data.length && <button className="nextQ" onClick={() => {
+            if (isRandom) {
+              setHistory([...history, currentQuestion]);
+              let num = Math.floor(Math.random() * data.length);
+              while (history.includes(num)) {
+                num = Math.floor(Math.random() * data.length);
+              }
+              setCurrentQuestion(num);
+            }
+            else {
+              setCurrentQuestion(currentQuestion + 1)
+            }
+          }
+          }> 다음 문제</button>}
         </div>
       </div>
     </div >);
